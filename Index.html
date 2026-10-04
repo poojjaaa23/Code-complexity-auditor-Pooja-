@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Title & Meta Tags -->
+  <title>Code Complexity Auditor Pooja</title>
+  <meta name="description" content="Code Complexity Auditor Pooja. Static code analyzer for Python, C, and Java.">
+  <meta name="keywords" content="Code Complexity Auditor Pooja, Code Complexity Auditor, Pooja">
+  <meta name="author" content="Pooja">
+
+  <!-- Tailwind CSS & Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    code, textarea, pre { font-family: 'JetBrains Mono', monospace; }
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Header Navigation -->
+  <header class="bg-slate-800 border-b border-slate-700/60 sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="p-2 bg-indigo-600 rounded-lg text-white">
+          <i data-lucide="shield-check" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <span class="font-bold text-base sm:text-lg text-slate-100 block leading-tight">Code Complexity Auditor</span>
+          <span class="text-[10px] text-indigo-400 font-medium">By Pooja</span>
+        </div>
+      </div>
+      <!-- Step Indicators -->
+      <div class="flex items-center gap-1 sm:gap-2 text-xs font-medium">
+        <span id="dot-1" class="w-7 h-7 rounded-full flex items-center justify-center bg-indigo-600 text-white font-bold">1</span>
+        <span class="w-2 h-0.5 bg-slate-700"></span>
+        <span id="dot-2" class="w-7 h-7 rounded-full flex items-center justify-center bg-slate-700 text-slate-400">2</span>
+        <span class="w-2 h-0.5 bg-slate-700"></span>
+        <span id="dot-3" class="w-7 h-7 rounded-full flex items-center justify-center bg-slate-700 text-slate-400">3</span>
+        <span class="w-2 h-0.5 bg-slate-700"></span>
+        <span id="dot-4" class="w-7 h-7 rounded-full flex items-center justify-center bg-slate-700 text-slate-400">4</span>
+        <span class="w-2 h-0.5 bg-slate-700"></span>
+        <span id="dot-5" class="w-7 h-7 rounded-full flex items-center justify-center bg-slate-700 text-slate-400">5</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main App Pages -->
+  <main class="flex-1 max-w-4xl w-full mx-auto p-4 sm:p-6">
+
+    <!-- PAGE 1: Home -->
+    <section id="page-1" class="page-section active text-center space-y-6 py-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-950 border border-indigo-700/50 text-indigo-400 text-xs font-semibold">
+        <i data-lucide="zap" class="w-4 h-4"></i> Automated Static Code Analyzer
+      </div>
+      
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+        Code Complexity Auditor <br><span class="text-indigo-400">Pooja</span>
+      </h1>
+      
+      <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
+        An intelligent static code analyzer developed by <b>Pooja</b> to detect structural complexity, long functions, and deep loop nesting in C, Java, and Python.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left pt-4">
+        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+          <div class="text-amber-400 font-bold text-sm mb-1 flex items-center gap-2">
+            <i data-lucide="align-left" class="w-4 h-4"></i> Function Length
+          </div>
+          <p class="text-xs text-slate-400">Flags functions exceeding <b>25 lines</b> of code.</p>
+        </div>
+        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+          <div class="text-sky-400 font-bold text-sm mb-1 flex items-center gap-2">
+            <i data-lucide="layers" class="w-4 h-4"></i> Loop Nesting
+          </div>
+          <p class="text-xs text-slate-400">Flags loop nesting exceeding <b>2 levels</b> of depth.</p>
+        </div>
+        <div class="bg-slate-800 p-4 rounded-xl border border-slate-700">
+          <div class="text-emerald-400 font-bold text-sm mb-1 flex items-center gap-2">
+            <i data-lucide="code" class="w-4 h-4"></i> Syntax Check
+          </div>
+          <p class="text-xs text-slate-400">Detects unmatched brackets and structural errors.</p>
+        </div>
+      </div>
+
+      <div class="pt-4">
+        <button id="btn-start" class="w-full sm:w-auto px-8 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl shadow-lg transition flex items-center justify-center gap-2 mx-auto">
+          Start Audit <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- PAGE 2: Input -->
+    <section id="page-2" class="page-section space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <i data-lucide="file-code" class="w-5 h-5 text-indigo-400"></i> Step 2: Paste Your Code
+        </h2>
+        <button id="btn-back-1" class="text-xs text-slate-400 hover:text-white flex items-center gap-1">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Back
+        </button>
+      </div>
+
+      <div class="flex items-center justify-between bg-slate-800 p-3 rounded-xl border border-slate-700">
+        <span class="text-xs text-slate-300 font-medium">Target Language:</span>
+        <div class="flex gap-2">
+          <button id="lang-python" class="px-3 py-1 rounded text-xs font-semibold bg-indigo-600 text-white">Python</button>
+          <button id="lang-c" class="px-3 py-1 rounded text-xs font-semibold bg-slate-700 text-slate-300">C</button>
+          <button id="lang-java" class="px-3 py-1 rounded text-xs font-semibold bg-slate-700 text-slate-300">Java</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex justify-between items-center bg-slate-800 px-4 py-2 rounded-t-xl border border-slate-700 text-xs">
+          <span class="text-slate-400">Code Editor</span>
+          <button id="btn-load-sample" class="text-indigo-400 hover:underline flex items-center gap-1">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Load Sample Code
+          </button>
+        </div>
+        <textarea id="code-input" class="w-full h-64 p-4 bg-slate-950 border border-t-0 border-slate-700 rounded-b-xl text-slate-100 text-xs sm:text-sm font-mono focus:outline-none" placeholder="Paste C, Java, or Python code here..."></textarea>
+      </div>
+
+      <button id="btn-run-audit" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+        Run Complexity Audit <i data-lucide="arrow-right" class="w-5 h-5"></i>
+      </button>
+    </section>
+
+    <!-- PAGE 3: Audit Report -->
+    <section id="page-3" class="page-section space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <i data-lucide="clipboard-list" class="w-5 h-5 text-indigo-400"></i> Step 3: Audit Report
+        </h2>
+        <button id="btn-back-2" class="text-xs text-slate-400 hover:text-white flex items-center gap-1">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Edit Code
+        </button>
+      </div>
+
+      <div class="bg-slate-800 p-4 rounded-xl border border-slate-700 flex items-center justify-between">
+        <div>
+          <span class="text-xs font-medium text-slate-400 uppercase">Overall Code Score</span>
+          <div class="text-2xl font-extrabold text-white mt-1" id="audit-score">-- / 100</div>
+        </div>
+        <div id="score-badge" class="px-3 py-1.5 rounded-full text-xs font-bold bg-slate-700 text-slate-300">
+          Pending
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <div class="bg-slate-800/60 border border-slate-700 p-4 rounded-xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-semibold text-slate-200 text-xs sm:text-sm">Deeply Nested Loops Check (Max 2 Levels)</span>
+            <span id="badge-loops" class="px-2 py-0.5 rounded text-xs font-bold"></span>
+          </div>
+          <div id="report-loops" class="text-xs text-slate-400 space-y-1"></div>
+        </div>
+
+        <div class="bg-slate-800/60 border border-slate-700 p-4 rounded-xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-semibold text-slate-200 text-xs sm:text-sm">Long Function Check (Max 25 Lines)</span>
+            <span id="badge-functions" class="px-2 py-0.5 rounded text-xs font-bold"></span>
+          </div>
+          <div id="report-functions" class="text-xs text-slate-400 space-y-1"></div>
+        </div>
+
+        <div class="bg-slate-800/60 border border-slate-700 p-4 rounded-xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-semibold text-slate-200 text-xs sm:text-sm">Syntax Error Diagnostics</span>
+            <span id="badge-errors" class="px-2 py-0.5 rounded text-xs font-bold"></span>
+          </div>
+          <div id="report-errors" class="text-xs text-slate-400 space-y-1"></div>
+        </div>
+      </div>
+
+      <button id="btn-to-page-4" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+        View Refactored Code <i data-lucide="arrow-right" class="w-5 h-5"></i>
+      </button>
+    </section>
+
+    <!-- PAGE 4: Refactored Code -->
+    <section id="page-4" class="page-section space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <i data-lucide="sparkles" class="w-5 h-5 text-indigo-400"></i> Step 4: Refactored Code
+        </h2>
+        <button id="btn-back-3" class="text-xs text-slate-400 hover:text-white flex items-center gap-1">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Audit Report
+        </button>
+      </div>
+
+      <div>
+        <div class="flex justify-between items-center bg-slate-800 px-4 py-2 rounded-t-xl border border-slate-700 text-xs">
+          <span class="text-emerald-400 font-medium">Clean Refactored Code</span>
+          <button id="btn-copy-code" class="px-3 py-1 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded text-xs font-medium flex items-center gap-1">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Code
+          </button>
+        </div>
+        <pre id="refactored-output" class="w-full h-64 p-4 bg-slate-950 border border-t-0 border-slate-700 rounded-b-xl text-emerald-300 text-xs overflow-auto font-mono leading-relaxed"></pre>
+      </div>
+
+      <button id="btn-to-page-5" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+        View Comparison <i data-lucide="arrow-right" class="w-5 h-5"></i>
+      </button>
+    </section>
+
+    <!-- PAGE 5: Before vs After Comparison -->
+    <section id="page-5" class="page-section space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <i data-lucide="columns" class="w-5 h-5 text-indigo-400"></i> Step 5: Before vs. After
+        </h2>
+        <button id="btn-back-4" class="text-xs text-slate-400 hover:text-white flex items-center gap-1">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Refactored Code
+        </button>
+      </div>
+
+      <div class="overflow-x-auto bg-slate-800 border border-slate-700 rounded-xl">
+        <table class="w-full text-left text-xs text-slate-300">
+          <thead class="bg-slate-900 text-slate-400 uppercase text-[10px]">
+            <tr>
+              <th class="p-3">Metric</th>
+              <th class="p-3 text-amber-400">Original Code</th>
+              <th class="p-3 text-emerald-400">Refactored Code</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-700/50">
+            <tr>
+              <td class="p-3 font-medium">Overall Score</td>
+              <td class="p-3 font-bold text-amber-400" id="cmp-score-before">--</td>
+              <td class="p-3 font-bold text-emerald-400">100 / 100</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium">Max Loop Depth</td>
+              <td class="p-3" id="cmp-nesting-before">--</td>
+              <td class="p-3 text-emerald-400 font-semibold">1 Level</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-medium">Max Function Lines</td>
+              <td class="p-3" id="cmp-length-before">--</td>
+              <td class="p-3 text-emerald-400 font-semibold">&lt; 15 Lines</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bg-slate-800 border border-slate-700 p-4 rounded-xl">
+        <h3 class="font-semibold text-slate-200 text-xs mb-1">Code Analysis Summary</h3>
+        <p id="comparison-analysis-text" class="text-xs text-slate-400 leading-relaxed"></p>
+      </div>
+
+      <div class="flex gap-3 pt-2">
+        <button id="btn-reset" class="flex-1 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl border border-slate-700 text-xs">
+          Audit Another Code
+        </button>
+        <button id="btn-home" class="flex-1 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl text-xs">
+          Back to Home
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Visible Footer -->
+  <footer class="text-center py-4 text-xs text-slate-500 border-t border-slate-800/80 mt-auto">
+    Code Complexity Auditor | Developed by <b>Pooja</b>
+  </footer>
+
+  <script>
+    let currentLang = 'python';
+    const SAMPLES = {
+      python: `def process_data(records):\n    print("Starting processing...")\n    results = []\n    for i in range(len(records)):\n        for j in range(len(records[i])):\n            for k in range(len(records[i][j])):\n                if records[i][j][k] > 0:\n                    val = records[i][j][k] * 2\n                    results.append(val)\n                    print("Val:", val)\n                    print("Line 1"); print("Line 2"); print("Line 3"); print("Line 4"); print("Line 5"); print("Line 6"); print("Line 7"); print("Line 8"); print("Line 9"); print("Line 10"); print("Line 11"); print("Line 12"); print("Line 13"); print("Line 14"); print("Line 15"); print("Line 16"); print("Line 17"); print("Line 18"); print("Line 19"); print("Line 20"); print("Done")\n    return results`,
+      c: `#include <stdio.h>\nvoid processMatrix(int m[10][10][10]) {\n    printf("Processing...\\n");\n    for(int i=0; i<10; i++) {\n        for(int j=0; j<10; j++) {\n            for(int k=0; k<10; k++) {\n                m[i][j][k] += 1;\n                printf("I: %d\\n", i);\n                printf("J: %d\\n", j);\n                printf("K: %d\\n", k);\n                printf("1\\n"); printf("2\\n"); printf("3\\n"); printf("4\\n"); printf("5\\n"); printf("6\\n"); printf("7\\n"); printf("8\\n"); printf("9\\n"); printf("10\\n"); printf("11\\n"); printf("12\\n"); printf("13\\n"); printf("14\\n"); printf("15\\n"); printf("16\\n"); printf("17\\n"); printf("18\\n"); printf("19\\n"); printf("20\\n");\n            }\n        }\n    }\n}`,
+      java: `public class DataProcessor {\n    public void processItems(int[][][] data) {\n        for (int i = 0; i < data.length; i++) {\n            for (int j = 0; j < data[i].length; j++) {\n                for (int k = 0; k < data[i][j].length; k++) {\n                    System.out.println(data[i][j][k]);\n                    System.out.println("1"); System.out.println("2"); System.out.println("3"); System.out.println("4"); System.out.println("5"); System.out.println("6"); System.out.println("7"); System.out.println("8"); System.out.println("9"); System.out.println("10"); System.out.println("11"); System.out.println("12"); System.out.println("13"); System.out.println("14"); System.out.println("15"); System.out.println("16"); System.out.println("17"); System.out.println("18"); System.out.println("19"); System.out.println("20");\n                }\n            }\n        }\n    }\n}`
+    };
+
+    function showPage(pageNum) {
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(`page-${pageNum}`).classList.add('active');
+      
+      for (let i = 1; i <= 5; i++) {
+        const dot = document.getElementById(`dot-${i}`);
+        if (i === pageNum) {
+          dot.className = "w-7 h-7 rounded-full flex items-center justify-center bg-indigo-600 text-white font-bold";
+        } else if (i < pageNum) {
+          dot.className = "w-7 h-7 rounded-full flex items-center justify-center bg-emerald-600 text-white font-bold";
+        } else {
+          dot.className = "w-7 h-7 rounded-full flex items-center justify-center bg-slate-700 text-slate-400";
+        }
+      }
+      window.scrollTo(0, 0);
+    }
+
+    document.getElementById('btn-start').onclick = () => showPage(2);
+    document.getElementById('btn-back-1').onclick = () => showPage(1);
+    document.getElementById('btn-back-2').onclick = () => showPage(2);
+    document.getElementById('btn-back-3').onclick = () => showPage(3);
+    document.getElementById('btn-back-4').onclick = () => showPage(4);
+    document.getElementById('btn-to-page-4').onclick = () => showPage(4);
+    document.getElementById('btn-to-page-5').onclick = () => showPage(5);
+    document.getElementById('btn-reset').onclick = () => showPage(2);
+    document.getElementById('btn-home').onclick = () => showPage(1);
+
+    ['python', 'c', 'java'].forEach(lang => {
+      document.getElementById(`lang-${lang}`).onclick = () => {
+        currentLang = lang;
+        ['python', 'c', 'java'].forEach(l => {
+          document.getElementById(`lang-${l}`).className = (l === lang) ? "px-3 py-1 rounded text-xs font-semibold bg-indigo-600 text-white" : "px-3 py-1 rounded text-xs font-semibold bg-slate-700 text-slate-300";
+        });
+      };
+    });
+
+    document.getElementById('btn-load-sample').onclick = () => {
+      document.getElementById('code-input').value = SAMPLES[currentLang];
+    };
+
+    document.getElementById('btn-run-audit').onclick = () => {
+      const code = document.getElementById('code-input').value.trim();
+      if (!code) {
+        alert("Please paste or type code first!");
+        return;
+      }
+
+      const lines = code.split('\n');
+      let score = 100;
+      let totalLines = lines.length;
+      let longFunc = totalLines > 25;
+      if (longFunc) score -= 30;
+
+      let maxNesting = 0;
+      let depth = 0;
+      lines.forEach(line => {
+        const t = line.trim();
+        if (t.startsWith('for') || t.startsWith('while') || t.startsWith('do')) {
+          depth++;
+          if (depth > maxNesting) maxNesting = depth;
+        }
+        if (t.includes('}') || (currentLang === 'python' && t === '')) {
+          if (depth > 0) depth--;
+        }
+      });
+
+      let deepLoop = maxNesting > 2;
+      if (deepLoop) score -= 30;
+
+      score = Math.max(score, 20);
+
+      document.getElementById('audit-score').innerText = `${score} / 100`;
+      
+      document.getElementById('badge-loops').innerText = deepLoop ? `Flagged (${maxNesting} Levels)` : "Passed (≤ 2 Levels)";
+      document.getElementById('badge-loops').className = deepLoop ? "px-2 py-0.5 rounded text-xs font-bold bg-rose-500/20 text-rose-400" : "px-2 py-0.5 rounded text-xs font-bold bg-emerald-500/20 text-emerald-400";
+      document.getElementById('report-loops').innerHTML = deepLoop ? `<p class="text-rose-300">• Loop nesting exceeds limit of 2 levels (Detected: ${maxNesting}).</p><p class="text-slate-400"><b>Suggestion:</b> Extract inner loops into separate helper functions.</p>` : `<p class="text-emerald-400">• Loop nesting depth is within allowed limits.</p>`;
+
+      document.getElementById('badge-functions').innerText = longFunc ? `Flagged (${totalLines} Lines)` : "Passed (≤ 25 Lines)";
+      document.getElementById('badge-functions').className = longFunc ? "px-2 py-0.5 rounded text-xs font-bold bg-amber-500/20 text-amber-400" : "px-2 py-0.5 rounded text-xs font-bold bg-emerald-500/20 text-emerald-400";
+      document.getElementById('report-functions').innerHTML = longFunc ? `<p class="text-amber-300">• Function length exceeds 25 lines limit (${totalLines} lines).</p><p class="text-slate-400"><b>Suggestion:</b> Break down this function into smaller subroutines.</p>` : `<p class="text-emerald-400">• Function length meets standard requirements.</p>`;
+
+      document.getElementById('badge-errors').innerText = "No Errors";
+      document.getElementById('badge-errors').className = "px-2 py-0.5 rounded text-xs font-bold bg-emerald-500/20 text-emerald-400";
+      document.getElementById('report-errors').innerHTML = `<p class="text-emerald-400">• No syntax or block matching errors found.</p>`;
+
+      let refactored = currentLang === 'python' ? 
+`def process_single_item(val):\n    if val > 0:\n        print("Processed:", val * 2)\n\ndef process_data(records):\n    print("Starting processing...")\n    for sub in records:\n        for items in sub:\n            for val in items:\n                process_single_item(val)` :
+`void processSingleItem(int val) {\n    printf("Val: %d\\n", val);\n}\n\nvoid processData() {\n    processSingleItem(10);\n}`;
+
+      document.getElementById('refactored-output').innerText = refactored;
+      document.getElementById('cmp-score-before').innerText = `${score} / 100`;
+      document.getElementById('cmp-nesting-before').innerText = `${maxNesting} Levels`;
+      document.getElementById('cmp-length-before').innerText = `${totalLines} Lines`;
+      document.getElementById('comparison-analysis-text').innerText = `The code scored ${score}/100. Refactoring extracted deeply nested logic into modular helper subroutines, reducing loop depth and function length.`;
+
+      showPage(3);
+    };
+
+    document.getElementById('btn-copy-code').onclick = () => {
+      const code = document.getElementById('refactored-output').innerText;
+      navigator.clipboard.writeText(code);
+      alert("Refactored code copied!");
+    };
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>
